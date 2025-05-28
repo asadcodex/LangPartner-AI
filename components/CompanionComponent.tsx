@@ -7,7 +7,7 @@ import Image from "next/image";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
 import soundwaves from '@/constants/soundwaves.json'
 import {addToSessionHistory} from "@/lib/actions/companion.actions";
-import { DEFAULT_PARTNER_ICON_PATH } from "@/constants";
+import { DEFAULT_PARTNER_ICON_PATH } from "@/constants/index";
 
 
 enum CallStatus {

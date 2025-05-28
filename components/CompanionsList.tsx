@@ -11,7 +11,7 @@ import {
 import {cn, getSubjectColor} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import { DEFAULT_PARTNER_ICON_PATH } from "@/constants";
+import { DEFAULT_PARTNER_ICON_PATH } from "@/constants/index";
 
 interface CompanionsListProps {
     title: string;

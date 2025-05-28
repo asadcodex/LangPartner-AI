@@ -21,4 +21,4 @@ export const voices = {
   female: { casual: "ZIlrSGI4jZqobxRKprJz", formal: "sarah" },
 };
 
-export const DEFAULT_PARTNER_ICON_PATH = "/icons/default-partner-icon.svg";
+export const DEFAULT_PARTNER_ICON_PATH = '/icons/default-partner-icon.svg';
