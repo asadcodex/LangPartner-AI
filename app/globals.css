@@ -2,6 +2,37 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+::-webkit-scrollbar {
+  width: 8px;  /* Width of the vertical scrollbar */
+  height: 8px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  /* Background of the scrollbar track */
+  background: oklch(0.18 0 0); /* A very dark gray, slightly lighter than pure black */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* The draggable scrolling handle */
+  background-color: oklch(0.35 0 0); /* A medium-dark gray for the thumb */
+  border-radius: 4px;
+  /* You can add a subtle border if you like */
+  /* border: 1px solid oklch(0.45 0 0); */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* Thumb color on hover */
+  background-color: oklch(0.45 0 0); /* Slightly lighter gray on hover */
+}
+
+/* For Firefox */
+/* Note: Firefox provides less granular control than WebKit */
+html {
+  scrollbar-width: thin; /* Options: 'auto', 'thin', 'none' */
+  scrollbar-color: oklch(0.35 0 0) oklch(0.18 0 0); /* thumb-color track-color */
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
