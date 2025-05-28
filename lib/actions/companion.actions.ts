@@ -47,14 +47,11 @@ export const getCompanion = async (id: string) => {
     const { data, error } = await supabase
         .from('companions')
         .select()
-        .maybeSingle(); // Change: Use .maybeSingle()
+        .eq('id', id);
 
-    if (error) {
-        console.error("Error fetching companion:", error.message);
-        throw new Error(`Failed to fetch companion with ID ${id}: ${error.message}`);
-    }
+    if(error) return console.log(error);
 
-    return data;
+    return data[0];
 }
 
 export const addToSessionHistory = async (companionId: string) => {
