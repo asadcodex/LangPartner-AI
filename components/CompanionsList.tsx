@@ -11,6 +11,7 @@ import {
 import {cn, getSubjectColor} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
+import { DEFAULT_PARTNER_ICON_PATH } from "@/constants";
 
 interface CompanionsListProps {
     title: string;
@@ -39,7 +40,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                                     <div className="flex items-center gap-2">
                                         <div className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden" style={{ backgroundColor: getSubjectColor(subject) }}>
                                             <Image
-                                                src={`/icons/${subject}.svg`}
+                                                src={DEFAULT_PARTNER_ICON_PATH}
                                                 alt={subject}
                                                 width={35}
                                                 height={35} />

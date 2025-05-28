@@ -7,6 +7,8 @@ import Image from "next/image";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
 import soundwaves from '@/constants/soundwaves.json'
 import {addToSessionHistory} from "@/lib/actions/companion.actions";
+import { DEFAULT_PARTNER_ICON_PATH } from "@/constants";
+
 
 enum CallStatus {
     INACTIVE = 'INACTIVE',
@@ -105,7 +107,7 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
                                 'absolute transition-opacity duration-1000', callStatus === CallStatus.FINISHED || callStatus === CallStatus.INACTIVE ? 'opacity-1001' : 'opacity-0', callStatus === CallStatus.CONNECTING && 'opacity-100 animate-pulse'
                             )
                         }>
-                            <Image src={`/icons/${subject}.svg`} alt={subject} width={150} height={150} className="max-sm:w-fit" />
+                            <Image src={DEFAULT_PARTNER_ICON_PATH} alt={subject} width={150} height={150} className="max-sm:w-fit" />
                         </div>
 
                         <div className={cn('absolute transition-opacity duration-1000', callStatus === CallStatus.ACTIVE ? 'opacity-100': 'opacity-0')}>
