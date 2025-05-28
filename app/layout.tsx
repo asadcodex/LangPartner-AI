@@ -21,7 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${bricolage.className} antialiased`}>
-        <ClerkProvider appearance={{ variables: { colorPrimary: '#fe5933' }} }>
+        <ClerkProvider appearance={{
+            variables: { colorPrimary: '#fe5933' }, // Your existing primary for Clerk components
+            elements: {
+              userButtonAvatarBox: "w-8 h-8", // Makes avatar in UserButton smaller
+              userButtonTrigger: "focus:ring-0 focus:shadow-none outline-none", // Removes default focus ring if it feels out of place
+            }
+          }} >
           <Navbar />
           {children}
         </ClerkProvider>

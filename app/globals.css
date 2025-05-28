@@ -26,8 +26,6 @@
   background-color: oklch(0.45 0 0); /* Slightly lighter gray on hover */
 }
 
-/* For Firefox */
-/* Note: Firefox provides less granular control than WebKit */
 html {
   scrollbar-width: thin; /* Options: 'auto', 'thin', 'none' */
   scrollbar-color: oklch(0.35 0 0) oklch(0.18 0 0); /* thumb-color track-color */
@@ -36,7 +34,7 @@ html {
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: #fe5933;
+  --primary: #3B82F6;
 
   --cta: #2c2c2c;
   --cta-gold: #fccc41;
@@ -127,7 +125,7 @@ body {
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: #fe5933;
+  --primary: #3B82F6;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -170,6 +168,79 @@ body {
 }
 
 @layer components {
+
+
+  .navbar-container {
+  @apply w-full flex justify-center py-3 px-4 sticky top-0 z-50 bg-background transition-colors duration-300;
+  /* You might want a subtle shadow or border if the page behind it scrolls */
+  /* border-bottom: 1px solid var(--border); */
+}
+
+.navbar-content {
+  @apply flex items-center justify-center gap-4; /* Centering the logo + pill group */
+}
+
+.navbar-logo {
+  @apply flex-shrink-0 transition-opacity hover:opacity-80;
+}
+
+.pill-nav {
+  @apply flex items-center gap-1 p-1.5 rounded-full shadow-md;
+  /* Using a card-like background for the pill in dark mode */
+  background-color: var(--card); /* oklch(0.205 0 0) for dark theme */
+  /* Optional: Add a subtle border if needed, similar to existing --border */
+  border: 1px solid var(--border);
+}
+
+.dark .pill-nav {
+  /* Slightly more opaque or different background if needed, or use backdrop blur */
+   background-color: oklch(0.22 0 0 / 75%); /* Example: slightly lighter or more opaque */
+   @apply backdrop-blur-sm; /* Add a subtle blur effect */
+}
+
+.nav-items-group {
+  @apply flex items-center gap-1; /* Gap between nav items like Home, Partners, etc. */
+}
+
+.pill-nav-link {
+  @apply px-3 sm:px-4 py-1.5 text-sm rounded-full transition-all duration-200 ease-in-out;
+  color: var(--muted-foreground); /* Default text color for links */
+}
+
+.pill-nav-link:hover {
+  color: var(--foreground);
+  background-color: var(--accent); /* Uses accent color on hover */
+}
+
+.dark .pill-nav-link:hover {
+  background-color: oklch(0.3 0 0 / 60%); /* Slightly lighter accent for dark hover */
+}
+
+.pill-nav-link.active {
+  color: var(--primary); /* Use your project's primary color for active link text */
+  font-weight: 600;
+  /* Optional: background for active link */
+  /* background-color: var(--primary); */
+  /* color: var(--primary-foreground); */
+}
+
+.auth-section {
+  @apply flex items-center ml-2 pr-2; /* Margin to separate from nav items */
+}
+
+/* Style for the "Sign In" button to match other nav links */
+.nav-link-signin {
+  @apply bg-transparent border-none shadow-none;
+}
+.nav-link-signin:hover {
+   /* Inherits hover from .pill-nav-link or can be specific */
+   color: var(--foreground);
+   background-color: var(--accent);
+}
+.dark .nav-link-signin:hover {
+   background-color: oklch(0.3 0 0 / 60%);
+}
+
   .home-section {
     @apply flex gap-4 justify-between items-start w-full max-lg:flex-col-reverse max-lg:items-center;
   }
@@ -201,12 +272,12 @@ body {
   .btn-primary {
     @apply bg-primary text-white rounded-xl cursor-pointer px-4 py-2 flex items-center gap-2;
   }
-  .navbar {
+  /* .navbar {
     @apply flex items-center justify-between mx-auto w-full px-14 py-4 bg-background max-sm:px-4;
   }
   .btn-signin {
     @apply border border-black rounded-4xl px-4 py-2.5 text-sm font-semibold flex items-center gap-2 cursor-pointer;
-  }
+  } */
   .companion-list {
     @apply rounded-4xl border border-border px-7 pt-7 pb-10 max-lg:w-full bg-background text-foreground;
   }
