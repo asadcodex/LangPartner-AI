@@ -20,16 +20,8 @@ const CompanionCard = ({
 }: CompanionCardProps) => {
   return (
     <article className="companion-card">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-center items-center">
         <div className="subject-badge">{subject}</div>
-        <button className="companion-bookmark">
-          <Image
-            src="/icons/bookmark.svg"
-            alt="bookmark"
-            width={12.5}
-            height={15}
-          />
-        </button>
       </div>
       <h2 className="text-2xl font-bold">{name}</h2>
       <p className="text-sm">{topic}</p>
@@ -44,7 +36,7 @@ const CompanionCard = ({
       </div>
       <Link href={`/companions/${id}`} className="w-full">
         <button className="btn-primary w-full justify-center">
-          Launch Lesson
+          Converse
         </button>
       </Link>
     </article>
