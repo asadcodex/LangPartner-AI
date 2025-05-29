@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CornerElements from "./CornerElements";
 
 interface CompanionCardProps {
   id: string;
@@ -19,7 +20,8 @@ const CompanionCard = ({
   color,
 }: CompanionCardProps) => {
   return (
-    <article className="companion-card">
+    <article className="relative companion-card">
+      <CornerElements />
       <div className="flex justify-center items-center">
         <div className="subject-badge">{subject}</div>
       </div>
