@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -20,16 +21,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${bricolage.className} antialiased`}>
+      {/* Removed bg-background from body. The body will be transparent by default. */}
+      <body className={`${bricolage.className} antialiased flex flex-col h-full`}> 
         <ClerkProvider appearance={{
-            variables: { colorPrimary: '#fe5933' }, // Your existing primary for Clerk components
+            variables: { colorPrimary: '#fe5933' },
             elements: {
-              userButtonAvatarBox: "w-8 h-8", // Makes avatar in UserButton smaller
-              userButtonTrigger: "focus:ring-0 focus:shadow-none outline-none", // Removes default focus ring if it feels out of place
+              userButtonAvatarBox: "w-8 h-8",
+              userButtonTrigger: "focus:ring-0 focus:shadow-none outline-none",
             }
           }} >
-          <Navbar />
-          {children}
+          <Navbar /> {/* Navbar takes its own height and has conditional background */}
+          {/* This wrapper takes remaining space. */}
+          {/* Added bg-background here to provide default background for pages. */}
+          {/* On app/page.tsx, its fixed hero image (z-0) will cover this bg-background. */}
+          <div className="flex-1 overflow-y-auto relative bg-background"> 
+            {children}
+          </div>
         </ClerkProvider>
       </body>
     </html>

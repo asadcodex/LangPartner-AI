@@ -156,41 +156,62 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply h-full; /* Ensure html takes full height */
+  }
   body {
-    @apply bg-background text-foreground;
+    /* Default background for all pages; app/page.tsx will have its own full-page background div */
+    @apply text-foreground flex flex-col h-full;  /* */
+    font-family: var(--font-bricolage); /* */
+    min-height: 100vh;
+    width: 100%;
   }
   main {
-    @apply mx-auto px-14 flex flex-col gap-8 bg-background h-full max-w-[1400px] pt-10 max-sm:px-2 mb-5;
+    /* Default styling for <main> tag on pages other than app/page.tsx */
+    /* app/page.tsx uses its own <main> with bg-transparent */
+    @apply mx-auto px-14 flex flex-col gap-8 bg-background h-full max-w-[1400px] pt-10 max-sm:px-2 mb-5; /* */
   }
   h1 {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-bold; /* */
   }
 }
 
 @layer components {
 
 
-  .navbar-container {
-  @apply w-full flex justify-center py-3 px-4 sticky top-0 z-50 bg-background transition-colors duration-300;
-  /* You might want a subtle shadow or border if the page behind it scrolls */
-  /* border-bottom: 1px solid var(--border); */
-}
+  .navbar-container { /* Common structural styles */
+    @apply w-full flex justify-center py-3 px-4 sticky top-0 z-50 transition-colors duration-300; /* */
+  }
 
 .navbar-content {
   @apply flex items-center justify-center gap-4; /* Centering the logo + pill group */
 }
 
-.navbar-logo {
-  @apply flex-shrink-0 transition-opacity hover:opacity-80;
-}
+.navbar-default-page { /* Navbar background for regular pages */
+    @apply bg-background; /* Or your preferred opaque/semi-opaque dark theme navbar background */
+    /* Example: background-color: oklch(0.205 0 0); */
+  }
 
-.pill-nav {
-  @apply flex items-center gap-1 p-1.5 rounded-full shadow-md;
-  /* Using a card-like background for the pill in dark mode */
-  background-color: var(--card); /* oklch(0.205 0 0) for dark theme */
-  /* Optional: Add a subtle border if needed, similar to existing --border */
-  border: 1px solid var(--border);
-}
+  .navbar-main-page { /* Navbar background when on the main page with hero image */
+    background-color: oklch(0.1 0 0 / 40%); /* Dark, semi-transparent */
+    @apply backdrop-blur-lg; /* Frosted glass effect */
+  }
+
+  .navbar-content {
+    @apply flex items-center justify-center gap-4; /* */
+  }
+
+  .navbar-logo {
+    @apply flex-shrink-0 transition-opacity hover:opacity-80; /* */
+  }
+
+  .pill-nav {
+    @apply flex items-center gap-1 p-1.5 rounded-full shadow-md; /* */
+    /* This style should work for both navbar backgrounds, adjust if needed */
+    background-color: oklch(0.15 0 0 / 60%); /* Semi-transparent dark, slightly more opaque for pill */ /* */
+    @apply backdrop-blur-md; /* */
+    border: 1px solid var(--border); /* */
+  }
 
 .dark .pill-nav {
   /* Slightly more opaque or different background if needed, or use backdrop blur */
@@ -199,44 +220,43 @@ body {
 }
 
 .nav-items-group {
-  @apply flex items-center gap-1; /* Gap between nav items like Home, Partners, etc. */
-}
+    @apply flex items-center gap-1; /* */
+  }
 
-.pill-nav-link {
-  @apply px-3 sm:px-4 py-1.5 text-sm rounded-full transition-all duration-200 ease-in-out;
-  color: var(--muted-foreground); /* Default text color for links */
-}
+  .pill-nav-link {
+    @apply px-3 sm:px-4 py-1.5 text-sm rounded-full transition-all duration-200 ease-in-out; /* */
+    color: oklch(0.95 0 0); /* Adjusted for better visibility on various backgrounds */
+  }
 
-.pill-nav-link:hover {
-  color: var(--foreground);
-  background-color: var(--accent); /* Uses accent color on hover */
-}
+  .pill-nav-link:hover {
+    color: var(--primary); /* */
+    background-color: oklch(0.3 0 0 / 70%); /* Adjusted hover background */ /* */
+  }
 
 .dark .pill-nav-link:hover {
   background-color: oklch(0.3 0 0 / 60%); /* Slightly lighter accent for dark hover */
 }
 
 .pill-nav-link.active {
-  color: var(--primary); /* Use your project's primary color for active link text */
-  font-weight: 600;
-  /* Optional: background for active link */
-  /* background-color: var(--primary); */
-  /* color: var(--primary-foreground); */
-}
+    color: var(--primary); /* */
+    font-weight: 600; /* */
+  }
 
-.auth-section {
-  @apply flex items-center ml-2 pr-2; /* Margin to separate from nav items */
-}
+  .auth-section {
+    @apply flex items-center ml-2 pr-2; /* */
+  }
+
 
 /* Style for the "Sign In" button to match other nav links */
 .nav-link-signin {
-  @apply bg-transparent border-none shadow-none;
-}
+    @apply bg-transparent border-none shadow-none; /* */
+    color: oklch(0.95 0 0); /* Match pill-nav-link */
+  }
+
 .nav-link-signin:hover {
-   /* Inherits hover from .pill-nav-link or can be specific */
-   color: var(--foreground);
-   background-color: var(--accent);
-}
+     color: var(--primary); /* */
+     background-color: oklch(0.3 0 0 / 70%); /* Match pill-nav-link:hover */ /* */
+  }
 .dark .nav-link-signin:hover {
    background-color: oklch(0.3 0 0 / 60%);
 }
@@ -270,7 +290,7 @@ body {
     @apply bg-cta-gold rounded-4xl px-3 py-1.5 text-black;
   }
   .btn-primary {
-    @apply bg-primary text-white rounded-xl cursor-pointer px-4 py-2 flex items-center gap-2;
+    @apply bg-primary text-white text-primary-foreground rounded-xl cursor-pointer px-4 py-2 flex items-center gap-2;
   }
   /* .navbar {
     @apply flex items-center justify-between mx-auto w-full px-14 py-4 bg-background max-sm:px-4;
@@ -280,6 +300,10 @@ body {
   } */
   .companion-list {
     @apply rounded-4xl border border-border px-7 pt-7 pb-10 max-lg:w-full bg-background text-foreground;
+  }
+
+  .companion-list {
+    @apply rounded-4xl border border-border px-7 pt-7 pb-10 max-lg:w-full bg-background text-foreground; /* */
   }
   .companion-limit {
     @apply items-center justify-center flex flex-col gap-4 w-full min-2xl:w-1/2 pt-20 text-center;
