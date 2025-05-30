@@ -5,6 +5,7 @@ import {getSubjectColor} from "@/lib/utils";
 import Image from "next/image";
 import CompanionComponent from "@/components/CompanionComponent";
 import { DEFAULT_PARTNER_ICON_PATH } from "@/constants/index";
+import CornerElements from "@/components/CornerElements";
 
 
 interface CompanionSessionPageProps {
@@ -30,7 +31,8 @@ const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
 
     return (
         <main>
-            <article className="flex rounded-border justify-between p-6 max-md:flex-col">
+            <article className="flex rounded-border justify-between p-6 max-md:flex-col relative">
+                <CornerElements />
                 <div className="flex items-center gap-2">
                     <div className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden" style={{ backgroundColor: getSubjectColor(subject)}}>
                         <Image src={DEFAULT_PARTNER_ICON_PATH} alt={subject} width={35} height={35} />

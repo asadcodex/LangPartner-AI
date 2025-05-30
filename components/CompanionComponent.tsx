@@ -8,6 +8,7 @@ import Lottie, {LottieRefCurrentProps} from "lottie-react";
 import soundwaves from '@/constants/soundwaves.json'
 import {addToSessionHistory} from "@/lib/actions/companion.actions";
 import { DEFAULT_PARTNER_ICON_PATH } from "@/constants/index";
+import CornerElements from './CornerElements';
 
 
 enum CallStatus {
@@ -99,7 +100,8 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
     return (
         <section className="flex flex-col h-[70vh]">
             <section className="flex gap-8 max-sm:flex-col">
-                <div className="companion-section">
+                <div className="companion-section relative">
+                    <CornerElements />
                     <div className="companion-avatar" style={{ backgroundColor: getSubjectColor(subject)}}>
                         <div
                             className={
@@ -123,13 +125,15 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
                 </div>
 
                 <div className="user-section">
-                    <div className="user-avatar">
+                    <div className="user-avatar relative">
+                        <CornerElements />
                         <Image src={userImage} alt={userName} width={130} height={130} className="rounded-lg" />
                         <p className="font-bold text-2xl">
                             {userName}
                         </p>
                     </div>
-                    <button className="btn-mic" onClick={toggleMicrophone} disabled={callStatus !== CallStatus.ACTIVE}>
+                    <button className="btn-mic relative" onClick={toggleMicrophone} disabled={callStatus !== CallStatus.ACTIVE}>
+                        <CornerElements />
                         <Image src={isMuted ? '/icons/mic-off.svg' : '/icons/mic-on.svg'} alt="mic" width={36} height={36} />
                         <p className="max-sm:hidden">
                             {isMuted ? 'Turn on microphone' : 'Turn off microphone'}
