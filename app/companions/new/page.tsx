@@ -16,7 +16,7 @@ const NewCompanion = async () => {
       <main className="min-lg:w-1/3 min-md:w-2/3 items-center justify-center">
         <article className="w-full gap-4 flex flex-col relative p-[10px]">
           <CornerElements />
-          <h1 className="text-center">Language Partner Creator</h1>
+          <h1 className="text-center">Design a New Partner</h1>
 
           <CompanionForm />
         </article>

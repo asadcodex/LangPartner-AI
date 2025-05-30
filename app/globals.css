@@ -288,7 +288,7 @@ body {
     @apply bg-cta-gold rounded-4xl px-3 py-1.5 text-black;
   }
   .btn-primary {
-    @apply bg-primary text-white text-primary-foreground rounded-xl cursor-pointer px-4 py-2 flex items-center gap-2;
+    @apply bg-primary text-white text-primary-foreground rounded-sm cursor-pointer px-4 py-2 flex items-center gap-2;
   }
   /* .navbar {
     @apply flex items-center justify-between mx-auto w-full px-14 py-4 bg-background max-sm:px-4;
