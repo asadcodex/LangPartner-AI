@@ -11,7 +11,7 @@ const NewCompanion = async () => {
     <div className="relative h-full flex flex-col items-center justify-center overflow-hidden p-4">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hang-bg.png')" }} // Using hero-robot as placeholder, change as needed
+        style={{ backgroundImage: "url('/images/hang-bg.png')" }}
       />
       <main className="min-lg:w-1/3 min-md:w-2/3 items-center justify-center">
         <article className="w-full gap-4 flex flex-col relative p-[10px]">

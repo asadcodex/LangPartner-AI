@@ -1,4 +1,3 @@
-// components/NavItems.tsx
 'use client';
 
 import Link from "next/link";
@@ -8,22 +7,21 @@ import {cn} from "@/lib/utils";
 const navItems = [
     { label:'Home', href: '/' },
     { label: 'Language Partners', href: '/companions' },
-    { label: 'My Journey', href: '/my-journey' }, // Corrected to be root-relative
+    { label: 'My Journey', href: '/my-journey' },
 ]
 
 const NavItems = () => {
     const pathname = usePathname();
 
     return (
-        // Changed <nav> to <div> as the parent <nav> is now in Navbar.tsx
         <div className="nav-items-group">
             {navItems.map(({ label, href }) => (
                 <Link
                     href={href}
                     key={label}
                     className={cn(
-                        "pill-nav-link", // New class for common styling
-                        pathname === href ? "active" : "" // Class for active state
+                        "pill-nav-link",
+                        pathname === href ? "active" : ""
                     )}
                 >
                     {label}

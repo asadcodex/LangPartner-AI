@@ -18,10 +18,7 @@ const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
     const user = await currentUser();
 
     if (!companion) {
-        // If companion is not found, redirect to a general companions page or show a not found message.
-        // console.log(`Companion with ID ${id} not found, redirecting.`); // Optional: for server-side logging
         redirect('/companions');
-        // Note: A redirect() here will stop further execution of this component.
     }
 
     const { name, subject, title, topic, duration } = companion;
