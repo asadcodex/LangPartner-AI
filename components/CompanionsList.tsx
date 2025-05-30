@@ -12,6 +12,7 @@ import {cn, getSubjectColor} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { DEFAULT_PARTNER_ICON_PATH } from "@/constants/index";
+import CornerElements from "./CornerElements";
 
 interface CompanionsListProps {
     title: string;
@@ -21,7 +22,8 @@ interface CompanionsListProps {
 
 const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) => {
     return (
-        <article className={cn('companion-list', classNames)}>
+        <article className={cn('companion-list relative', classNames)}>
+            <CornerElements />
             <h2 className="font-bold text-3xl">{title}</h2>
 
             <Table>
