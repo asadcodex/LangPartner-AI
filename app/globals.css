@@ -197,17 +197,13 @@ body {
 
   .pill-nav {
     @apply flex items-center gap-1 p-1.5 rounded-full shadow-md;
-    background-color: oklch(
-      0.15 0 0 / 60%
-    );
+    background-color: oklch(0.15 0 0 / 60%);
     @apply backdrop-blur-md;
     border: 1px solid var(--border);
   }
 
   .dark .pill-nav {
-    background-color: oklch(
-      0.22 0 0 / 75%
-    );
+    background-color: oklch(0.22 0 0 / 75%);
     @apply backdrop-blur-sm;
   }
 
@@ -217,22 +213,16 @@ body {
 
   .pill-nav-link {
     @apply px-3 sm:px-4 py-1.5 text-sm rounded-full transition-all duration-200 ease-in-out;
-    color: oklch(
-      0.95 0 0
-    );
+    color: oklch(0.95 0 0);
   }
 
   .pill-nav-link:hover {
     color: var(--primary);
-    background-color: oklch(
-      0.3 0 0 / 70%
-    );
+    background-color: oklch(0.3 0 0 / 70%);
   }
 
   .dark .pill-nav-link:hover {
-    background-color: oklch(
-      0.3 0 0 / 60%
-    );
+    background-color: oklch(0.3 0 0 / 60%);
   }
 
   .pill-nav-link.active {
@@ -251,9 +241,7 @@ body {
 
   .nav-link-signin:hover {
     color: var(--primary);
-    background-color: oklch(
-      0.3 0 0 / 70%
-    );
+    background-color: oklch(0.3 0 0 / 70%);
   }
   .dark .nav-link-signin:hover {
     background-color: oklch(0.3 0 0 / 60%);
@@ -277,7 +265,13 @@ body {
   }
   .input {
     @apply !border-black !bg-white focus-visible:!ring-0 focus-visible:!border-black !w-full;
+    color: #1f2937;
   }
+
+  .input::placeholder {
+    color: #000000;
+  }
+
   .rounded-border {
     @apply rounded-4xl border border-black;
   }
